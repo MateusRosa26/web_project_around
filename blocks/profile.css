@@ -261,3 +261,10 @@
     line-height: 17px;
   }
 }
+
+@media screen and (max-width: 320px) {
+  .profile__add-btn img {
+    width: 80vw;
+    height: 8vh;
+  }
+}
