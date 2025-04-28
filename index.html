@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Around the US</title>
+
+    <meta name="author" content="Mateus" />
+    <meta name="description" content="Site de Viagem" />
+    <meta name="keywords" content="TripleTen, Projeto 7, Around Eua" />
+
+    <link rel="stylesheet" href="./pages/index.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="header">
+        <img
+          class="header__logo"
+          alt="logo around the us"
+          src="./images/Vector.svg"
+        />
+      </header>
+      <main class="content">
+        <section class="profile">
+          <div class="profile__main">
+            <img
+              class="profile__avatar"
+              alt="profile picture"
+              src="./images/AvatarPic.jpg"
+            />
+            <div class="profile__info">
+              <h2 class="profile__name">
+                Jacques Costeau
+                <button class="profile__edit-btn">
+                  <img src="./images/Edit Button.svg" alt="edit button" />
+                </button>
+              </h2>
+              <p class="profile__description">Explorador</p>
+            </div>
+          </div>
+          <button class="profile__add-btn">
+            <img src="./images/Add Button (1).svg" alt="add button" />
+          </button>
+        </section>
+        <div class="popup popup_type_edit-profile">
+          <div class="popup__container">
+            <button class="popup__close-btn" type="button">
+              <span class="popup__close-icon">×</span>
+            </button>
+            <h3 class="popup__title">Editar perfil</h3>
+            <form class="form form_type_edit-profile" novalidate>
+              <div class="form__field">
+                <input
+                  type="text"
+                  class="form__input form__input_type_name"
+                  placeholder="Nome"
+                  required
+                  minlength="2"
+                  maxlength="40"
+                />
+                <span class="form__error form__error_type_name"></span>
+              </div>
+              <div class="form__field">
+                <input
+                  type="text"
+                  class="form__input form__input_type_description"
+                  placeholder="Descrição"
+                  required
+                  minlength="2"
+                  maxlength="200"
+                />
+                <span class="form__error form__error_type_description"></span>
+              </div>
+              <button type="submit" class="form__submit-btn">Salvar</button>
+            </form>
+          </div>
+        </div>
+        <section class="elements">
+          <div class="elements__grid-container">
+            <div class="elements__grid-item">
+              <img
+                src="./images/kirill-pershin-1088404-unsplash (1).jpg"
+                alt="foto de paisagem montanhosa"
+              />
+              <h3 class="elements__photo-name">Vale de Yosemite</h3>
+              <button></button>
+            </div>
+            <div class="elements__grid-item">
+              <img
+                src="./images/kirill-pershin-1088404-unsplash.jpg"
+                alt="foto de paisagem montanhosa"
+              />
+              <h3 class="elements__photo-name">Lago de Braies</h3>
+              <button></button>
+            </div>
+            <div class="elements__grid-item">
+              <img
+                src="./images/kirill-pershin-1404681-unsplash (1).jpg"
+                alt="foto de paisagem montanhosa"
+              />
+              <h3 class="elements__photo-name">Lago Louise</h3>
+              <button></button>
+            </div>
+            <div class="elements__grid-item">
+              <img
+                src="./images/kirill-pershin-1404681-unsplash.jpg"
+                alt="foto de paisagem montanhosa"
+              />
+              <h3 class="elements__photo-name">Latemar</h3>
+              <button></button>
+            </div>
+            <div class="elements__grid-item">
+              <img
+                src="./images/kirill-pershin-1556355-unsplash (1).jpg"
+                alt="foto de paisagem montanhosa"
+              />
+              <h3 class="elements__photo-name">Montanhas Carenosas</h3>
+              <button></button>
+            </div>
+            <div class="elements__grid-item">
+              <img
+                src="./images/kirill-pershin-1556355-unsplash.jpg"
+                alt="foto de paisagem montanhosa"
+              />
+              <h3 class="elements__photo-name">Parque Nacional Xeril</h3>
+              <button></button>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer class="footer">
+        <p class="footer__copyright">© 2025 Around The U.S Mateus Rosa</p>
+      </footer>
+      <script src="js/utils.js"></script>
+      <script src="js/profileEdit.js"></script>
+      <script src="js/index.js"></script>
+    </div>
+  </body>
+</html>
