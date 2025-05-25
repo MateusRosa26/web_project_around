@@ -1,0 +1,223 @@
+.popup_type_add-card {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup_type_add-card.popup_opened {
+  display: flex;
+}
+
+.popup_type_add-card .popup__container {
+  background-color: #fff;
+  border-radius: 10px;
+  width: 320px;
+  padding: 30px 25px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.popup_type_add-card .popup__close-btn {
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: opacity 0.3s ease;
+}
+
+.popup_type_add-card .popup__close-icon {
+  font-size: 40px;
+  color: #fff;
+  line-height: 1;
+}
+
+.popup_type_add-card .popup__close-btn:hover {
+  opacity: 0.6;
+}
+
+.popup_type_add-card .popup__title {
+  font-weight: 600;
+  font-size: 22px;
+  margin-bottom: 25px;
+  color: #333;
+  text-align: center;
+}
+
+.popup_type_add-card .form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.popup_type_add-card .form__field {
+  display: flex;
+  flex-direction: column;
+}
+
+.popup_type_add-card .form__input {
+  padding: 10px 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  transition: border-color 0.2s;
+}
+
+.popup_type_add-card .form__input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.popup_type_add-card .form__error {
+  font-size: 13px;
+  color: #e74c3c;
+  min-height: 18px;
+  margin-top: 4px;
+}
+
+.popup_type_add-card .form__submit-btn {
+  background: url("../images/submit button.jpg") center/cover no-repeat;
+  background-color: transparent;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 0;
+  color: transparent;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.2s, opacity 0.3s, transform 0.1s;
+  min-height: 50px;
+  text-indent: -9999px;
+  overflow: hidden;
+}
+
+.popup_type_add-card .form__submit-btn:hover {
+  opacity: 0.8;
+}
+
+.popup_type_add-card .form__submit-btn:active {
+  background: url("../images/submit button 1.jpg") center/cover no-repeat;
+  background-color: transparent;
+  transform: scale(0.98);
+}
+
+.popup_type_add-card .form__submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: url("../images/submit button.jpg") center/cover no-repeat;
+  background-color: transparent;
+}
+
+/* Responsividade para mobile - igual ao popup de editar perfil */
+@media screen and (max-width: 768px) {
+  .popup_type_add-card .popup__close-btn {
+    top: -36px;
+    right: 0;
+  }
+
+  .popup_type_add-card .popup__close-icon {
+    font-size: 30px;
+  }
+
+  .popup_type_add-card .popup__container {
+    padding: 25px 22px;
+    max-width: 282px;
+  }
+}
+
+/* Corrigido: nome correto do botão de delete para .card__delete-btn */
+.card__delete-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.6);
+  border: none;
+  color: white;
+  font-size: 20px;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+/* Mostrar botão delete quando hover na grid item */
+.elements__grid-item:hover .card__delete-btn {
+  opacity: 1;
+}
+
+/* Popup de imagem */
+.popup_type_image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup_type_image.popup_opened {
+  display: flex;
+}
+
+.popup__container_type_image {
+  position: relative;
+  max-width: 75vw;
+  max-height: 75vh;
+  background: none;
+  padding: 0;
+  box-shadow: none;
+}
+
+.popup__image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.popup__caption {
+  color: #fff;
+  font-size: 12px;
+  line-height: 1.25;
+  margin: 10px 0 0 0;
+  font-weight: 400;
+}
+
+.popup_type_image .popup__close-btn {
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.popup_type_image .popup__close-icon {
+  color: #fff;
+  font-size: 32px;
+  line-height: 1;
+}
+
+.popup_type_image .popup__close-btn:hover .popup__close-icon {
+  opacity: 0.6;
+}

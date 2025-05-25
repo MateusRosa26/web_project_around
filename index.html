@@ -75,56 +75,49 @@
             </form>
           </div>
         </div>
+        <div class="popup popup_type_image">
+          <div class="popup__container popup__container_type_image">
+            <button class="popup__close-btn" type="button">
+              <span class="popup__close-icon">×</span>
+            </button>
+            <img class="popup__image" src="" alt="" />
+            <p class="popup__caption"></p>
+          </div>
+        </div>
+        <div class="popup popup_type_add-card">
+          <div class="popup__container">
+            <button class="popup__close-btn" type="button">
+              <span class="popup__close-icon">×</span>
+            </button>
+            <h3 class="popup__title">Novo Card</h3>
+            <form class="form form_type_add-card" novalidate>
+              <div class="form__field">
+                <input
+                  type="text"
+                  class="form__input form__input_type_title"
+                  placeholder="Título"
+                  required
+                  minlength="1"
+                />
+                <span class="form__error form__error_type_title"></span>
+              </div>
+              <div class="form__field">
+                <input
+                  type="url"
+                  class="form__input form__input_type_image"
+                  placeholder="URL da imagem"
+                  required
+                />
+                <span class="form__error form__error_type_image"></span>
+              </div>
+              <button type="submit" class="form__submit-btn">Adicionar</button>
+            </form>
+          </div>
+        </div>
+
         <section class="elements">
           <div class="elements__grid-container">
-            <div class="elements__grid-item">
-              <img
-                src="./images/kirill-pershin-1088404-unsplash (1).jpg"
-                alt="foto de paisagem montanhosa"
-              />
-              <h3 class="elements__photo-name">Vale de Yosemite</h3>
-              <button></button>
-            </div>
-            <div class="elements__grid-item">
-              <img
-                src="./images/kirill-pershin-1088404-unsplash.jpg"
-                alt="foto de paisagem montanhosa"
-              />
-              <h3 class="elements__photo-name">Lago de Braies</h3>
-              <button></button>
-            </div>
-            <div class="elements__grid-item">
-              <img
-                src="./images/kirill-pershin-1404681-unsplash (1).jpg"
-                alt="foto de paisagem montanhosa"
-              />
-              <h3 class="elements__photo-name">Lago Louise</h3>
-              <button></button>
-            </div>
-            <div class="elements__grid-item">
-              <img
-                src="./images/kirill-pershin-1404681-unsplash.jpg"
-                alt="foto de paisagem montanhosa"
-              />
-              <h3 class="elements__photo-name">Latemar</h3>
-              <button></button>
-            </div>
-            <div class="elements__grid-item">
-              <img
-                src="./images/kirill-pershin-1556355-unsplash (1).jpg"
-                alt="foto de paisagem montanhosa"
-              />
-              <h3 class="elements__photo-name">Montanhas Carenosas</h3>
-              <button></button>
-            </div>
-            <div class="elements__grid-item">
-              <img
-                src="./images/kirill-pershin-1556355-unsplash.jpg"
-                alt="foto de paisagem montanhosa"
-              />
-              <h3 class="elements__photo-name">Parque Nacional Xeril</h3>
-              <button></button>
-            </div>
+            <!-- Cards serão criados dinamicamente via JavaScript -->
           </div>
         </section>
       </main>
@@ -132,8 +125,10 @@
         <p class="footer__copyright">© 2025 Around The U.S Mateus Rosa</p>
       </footer>
       <script src="scripts/utils.js"></script>
+      <script src="scripts/cards.js"></script>
       <script src="scripts/profileEdit.js"></script>
       <script src="scripts/index.js"></script>
+      <script src="scripts/addCard.js"></script>
     </div>
   </body>
 </html>

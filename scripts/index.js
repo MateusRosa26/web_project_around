@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
   initProfileEdit();
 
-  const addButton = document.querySelector(".prifle__add-btn");
+  const addButton = document.querySelector(".profile__add-btn");
   if (addButton) {
-    addButton.classList.remove("prifle__add-btn");
+    addButton.classList.remove("profile__add-btn");
     addButton.classList.add("profile__add-btn");
   }
 
