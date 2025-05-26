@@ -56,25 +56,31 @@
 .popup_type_add-card .form {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 30px;
 }
 
 .popup_type_add-card .form__field {
-  display: flex;
-  flex-direction: column;
+  position: relative;
+  margin-bottom: 0;
 }
 
 .popup_type_add-card .form__input {
-  padding: 10px 12px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  transition: border-color 0.2s;
+  padding: 0 0 13px 0;
+  font-size: 14px;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0;
+  background: transparent;
+  transition: border-color 0.3s;
+  outline: none;
 }
 
 .popup_type_add-card .form__input:focus {
-  outline: none;
-  border-color: #007bff;
+  border-bottom-color: #000;
+}
+
+.popup_type_add-card .form__input::placeholder {
+  color: #c4c4c4;
 }
 
 .popup_type_add-card .form__error {
@@ -88,7 +94,7 @@
   background: url("../images/submit button.jpg") center/cover no-repeat;
   background-color: transparent;
   border: none;
-  border-radius: 8px;
+  border-radius: 0;
   padding: 12px 0;
   color: transparent;
   font-weight: 600;
