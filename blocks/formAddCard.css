@@ -91,7 +91,7 @@
 }
 
 .popup_type_add-card .form__submit-btn {
-  background: url("../images/submit button.jpg") center/cover no-repeat;
+  background: url("../images/Submit Button.jpg") center/cover no-repeat;
   background-color: transparent;
   border: none;
   border-radius: 0;
@@ -111,7 +111,7 @@
 }
 
 .popup_type_add-card .form__submit-btn:active {
-  background: url("../images/submit button 1.jpg") center/cover no-repeat;
+  background: url("../images/Submit Button 1.jpg") center/cover no-repeat;
   background-color: transparent;
   transform: scale(0.98);
 }
@@ -119,7 +119,7 @@
 .popup_type_add-card .form__submit-btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
-  background: url("../images/submit button.jpg") center/cover no-repeat;
+  background: url("../images/Submit Button.jpg") center/cover no-repeat;
   background-color: transparent;
 }
 
