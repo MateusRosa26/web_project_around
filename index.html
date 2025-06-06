@@ -120,6 +120,39 @@
           </div>
         </div>
 
+        <!-- Template para os cards -->
+        <template id="card-template">
+          <div class="elements__grid-item">
+            <button
+              class="elements__delete-btn"
+              type="button"
+              aria-label="Excluir card"
+            >
+              <img src="./images/delete-icon.svg" alt="delete" />
+            </button>
+            <img class="elements__photo" src="" alt="" />
+            <div class="elements__info">
+              <h2 class="elements__photo-name"></h2>
+              <button
+                class="elements__like-btn"
+                type="button"
+                aria-label="Curtir"
+              >
+                <img
+                  class="elements__like-icon"
+                  src="./images/like-icon.svg"
+                  alt="like"
+                />
+                <img
+                  class="elements__like-icon-active"
+                  src="./images/union.jpg"
+                  alt="liked button"
+                />
+              </button>
+            </div>
+          </div>
+        </template>
+
         <section class="elements">
           <div class="elements__grid-container">
             <!-- Cards serão criados dinamicamente via JavaScript -->
@@ -134,8 +167,8 @@
       <script src="scripts/validation-init.js"></script>
       <script src="scripts/cards.js"></script>
       <script src="scripts/profileEdit.js"></script>
-      <script src="scripts/index.js"></script>
       <script src="scripts/addCard.js"></script>
+      <script src="scripts/index.js"></script>
     </div>
   </body>
 </html>

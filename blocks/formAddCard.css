@@ -249,17 +249,17 @@
 }
 
 .popup_type_add-card .form__submit-btn_disabled {
-  background: url("../images/Submit Button dis.png") center/cover no-repeat !important;
-  background-color: transparent !important;
-  color: transparent !important;
-  opacity: 1 !important;
-  cursor: not-allowed !important;
+  background: url("../images/Submit Button dis.png") center/cover no-repeat;
+  background-color: transparent;
+  color: transparent;
+  opacity: 1;
+  cursor: not-allowed;
   text-indent: -9999px;
 }
 
 .popup_type_add-card .form__submit-btn_disabled:hover {
-  background: url("../images/Submit Button dis.png") center/cover no-repeat !important;
-  background-color: transparent !important;
-  opacity: 1 !important;
+  background: url("../images/Submit Button dis.png") center/cover no-repeat;
+  background-color: transparent;
+  opacity: 1;
   transform: none;
 }
