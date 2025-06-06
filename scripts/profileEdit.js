@@ -10,25 +10,38 @@ function initProfileEdit() {
   );
   const profileName = document.querySelector(".profile__name");
   const profileDescription = document.querySelector(".profile__description");
-  const submitButton = profileEditForm.querySelector(".form__submit-btn");
 
   function openProfileEditPopup() {
     const nameText = profileName.firstChild.textContent.trim();
     nameInput.value = nameText;
     descriptionInput.value = profileDescription.textContent;
-    toggleSubmitButtonState();
+
+    // Resetar validação
+    if (typeof resetValidation === "function") {
+      const validationConfig = {
+        formSelector: ".form",
+        inputSelector: ".form__input",
+        submitButtonSelector: ".form__submit-btn",
+        inactiveButtonClass: "form__submit-btn_disabled",
+        inputErrorClass: "form__input_type_error",
+        errorClass: "form__error_visible",
+      };
+      resetValidation(profileEditForm, validationConfig);
+    }
+
     openPopup(profileEditPopup);
   }
 
   function handleProfileFormSubmit(evt) {
     evt.preventDefault();
-    const nameValid = checkInputValidity(nameInput);
-    const descriptionValid = checkInputValidity(descriptionInput);
 
-    if (nameValid && descriptionValid) {
-      updateProfileInfo(nameInput.value, descriptionInput.value);
-      closePopup(profileEditPopup);
+    // Só prosseguir se formulário válido
+    if (!profileEditForm.checkValidity()) {
+      return;
     }
+
+    updateProfileInfo(nameInput.value, descriptionInput.value);
+    closePopup(profileEditPopup);
   }
 
   function updateProfileInfo(name, description) {
@@ -48,28 +61,9 @@ function initProfileEdit() {
     }, 1500);
   }
 
-  function validateForm() {
-    const nameValid = checkInputValidity(nameInput);
-    const descriptionValid = checkInputValidity(descriptionInput);
-    toggleSubmitButtonState(nameValid && descriptionValid);
-  }
-
-  function toggleSubmitButtonState(isValid = true) {
-    if (isValid) {
-      submitButton.removeAttribute("disabled");
-    } else {
-      submitButton.setAttribute("disabled", true);
-    }
-  }
-
   profileEditButton.addEventListener("click", openProfileEditPopup);
   profileEditCloseButton.addEventListener("click", () =>
     closePopup(profileEditPopup)
   );
   profileEditForm.addEventListener("submit", handleProfileFormSubmit);
-  nameInput.addEventListener("input", () => checkInputValidity(nameInput));
-  descriptionInput.addEventListener("input", () =>
-    checkInputValidity(descriptionInput)
-  );
-  profileEditForm.addEventListener("input", validateForm);
 }

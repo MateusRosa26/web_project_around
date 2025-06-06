@@ -227,3 +227,39 @@
 .popup_type_image .popup__close-btn:hover .popup__close-icon {
   opacity: 0.6;
 }
+
+/* Estilos de validação para o formulário de adicionar card */
+.popup_type_add-card .form__input_type_error {
+  border-bottom-color: #ff0000;
+}
+
+.popup_type_add-card .form__error {
+  font-size: 12px;
+  line-height: 15px;
+  color: #ff0000;
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.popup_type_add-card .form__error_visible {
+  opacity: 1;
+}
+
+.popup_type_add-card .form__submit-btn_disabled {
+  background: url("../images/Submit Button dis.png") center/cover no-repeat !important;
+  background-color: transparent !important;
+  color: transparent !important;
+  opacity: 1 !important;
+  cursor: not-allowed !important;
+  text-indent: -9999px;
+}
+
+.popup_type_add-card .form__submit-btn_disabled:hover {
+  background: url("../images/Submit Button dis.png") center/cover no-repeat !important;
+  background-color: transparent !important;
+  opacity: 1 !important;
+  transform: none;
+}

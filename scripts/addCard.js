@@ -24,8 +24,22 @@ document.addEventListener("DOMContentLoaded", () => {
   addCardBtn.addEventListener("click", () => {
     console.log("Botão de adicionar clicado!"); // Debug
     addCardForm.reset();
+
+    // Resetar validação
+    if (typeof resetValidation === "function") {
+      const validationConfig = {
+        formSelector: ".form",
+        inputSelector: ".form__input",
+        submitButtonSelector: ".form__submit-btn",
+        inactiveButtonClass: "form__submit-btn_disabled",
+        inputErrorClass: "form__input_type_error",
+        errorClass: "form__error_visible",
+      };
+      resetValidation(addCardForm, validationConfig);
+    }
+
     openPopup(addCardPopup);
-    titleInput.focus(); // Foco no campo ao abrir o popup
+    titleInput.focus();
   });
 
   closeAddPopupBtn.addEventListener("click", () => {
@@ -49,13 +63,13 @@ document.addEventListener("DOMContentLoaded", () => {
   addCardForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    const title = titleInput.value.trim();
-    const imageUrl = imageInput.value.trim();
-
-    if (!title || !isValidImageUrl(imageUrl)) {
-      alert("Preencha os campos corretamente com uma URL válida de imagem.");
+    // Só prosseguir se formulário válido
+    if (!addCardForm.checkValidity()) {
       return;
     }
+
+    const title = titleInput.value.trim();
+    const imageUrl = imageInput.value.trim();
 
     const newCard = createCard({ name: title, link: imageUrl });
     cardsContainer.prepend(newCard);
