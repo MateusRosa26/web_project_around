@@ -37,6 +37,12 @@
   align-items: center;
   gap: 18px;
   margin: 0;
+  /* Evita que nomes muito longos quebrem o layout */
+  max-width: 100%;
+  min-width: 0; /* Necessário para flex-box permitir encolhimento */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .profile__edit-btn {
@@ -61,6 +67,11 @@
   line-height: 22px;
   color: white;
   margin-top: 16px;
+  /* Limita o texto evitando que ultrapasse o container */
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .profile__add-btn {
