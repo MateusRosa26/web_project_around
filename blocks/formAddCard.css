@@ -191,6 +191,7 @@
   background: none;
   padding: 0;
   box-shadow: none;
+  text-align: center;
 }
 
 .popup__image {

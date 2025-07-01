@@ -21,10 +21,12 @@ export default class Popup {
   }
 
   setEventListeners() {
-    this._popupElement.addEventListener("mousedown", (evt) => {
+    this._popupElement.addEventListener("click", (evt) => {
+      // Fecha se clicar na overlay (próprio elemento .popup) ou em qualquer
+      // nó dentro do botão de fechar (close-btn ou close-icon)
       if (
         evt.target.classList.contains("popup") ||
-        evt.target.classList.contains("popup__close-btn")
+        evt.target.closest(".popup__close-btn")
       ) {
         this.close();
       }
