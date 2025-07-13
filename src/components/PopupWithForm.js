@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/extensions
 import Popup from "./Popup.js";
 
 export default class PopupWithForm extends Popup {
@@ -27,7 +26,6 @@ export default class PopupWithForm extends Popup {
     });
   }
 
-  // Método para alterar texto do botão durante loading
   renderLoading(isLoading, loadingText = "Salvando...") {
     if (isLoading) {
       this._submitButton.textContent = loadingText;

@@ -1,0 +1,135 @@
+.elements {
+  margin: 50px 0;
+  max-width: 880px;
+  width: 100%;
+}
+
+.elements__grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 20px;
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+.elements__grid-item {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+/* Removido - agora usando .elements__photo */
+
+/* Removido - agora usando .elements__photo-name dentro de .elements__info */
+
+.elements__photo {
+  width: 100%;
+  height: 282px;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.elements__info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 20px;
+}
+
+.elements__photo-name {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 900;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  color: #000;
+}
+
+/* Botão de deletar */
+.elements__delete-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  padding: 0;
+  width: 18px;
+  height: 20px;
+}
+
+.elements__delete-btn:hover {
+  opacity: 0.6;
+}
+
+.elements__grid-item:hover .elements__delete-btn {
+  opacity: 1;
+}
+
+/* Botão de curtir */
+.elements__like-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  width: 22px;
+  height: 19px;
+  transition: opacity 0.3s ease;
+  position: relative;
+}
+
+.elements__like-btn:hover {
+  opacity: 0.5;
+}
+
+/* Ícones do like */
+.elements__like-icon,
+.elements__like-icon-active {
+  width: 22px;
+  height: 19px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Estado normal - mostrar ícone vazio */
+.elements__like-icon {
+  opacity: 1;
+}
+
+.elements__like-icon-active {
+  opacity: 0;
+}
+
+/* Estado ativo - mostrar ícone preenchido */
+.elements__like-btn_active .elements__like-icon {
+  opacity: 0;
+}
+
+.elements__like-btn_active .elements__like-icon-active {
+  opacity: 1;
+}
+
+/* Responsividade */
+@media screen and (max-width: 880px) {
+  .elements__grid-container {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .elements__grid-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+  .elements__grid-item img {
+    height: 200px;
+  }
+}

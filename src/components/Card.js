@@ -1,17 +1,17 @@
 export default class Card {
   constructor(
-    { name, link, _id, isLiked, owner },
+    data,
     templateSelector,
     handleImageClick,
     handleDeleteClick,
     handleLikeClick,
     currentUserId
   ) {
-    this._name = name;
-    this._link = link;
-    this._id = _id;
-    this._isLiked = isLiked;
-    this._owner = owner;
+    this._name = data.name;
+    this._link = data.link;
+    this._id = data._id;
+    this._isLiked = data.isLiked;
+    this._owner = data.owner;
     this._templateSelector = templateSelector;
     this._handleImageClick = handleImageClick;
     this._handleDeleteClick = handleDeleteClick;
@@ -20,41 +20,31 @@ export default class Card {
   }
 
   _getTemplate() {
-    const template = document
+    const cardElement = document
       .querySelector(this._templateSelector)
       .content.querySelector(".elements__grid-item")
       .cloneNode(true);
-    return template;
+    return cardElement;
   }
 
   _setEventListeners() {
-    // Delete button - only show if user owns the card
+    this._likeButton.addEventListener("click", () => {
+      this._handleLikeClick(this._id, this._isLiked);
+    });
+
     if (this._owner === this._currentUserId) {
-      this._deleteButton.addEventListener("click", () =>
-        this._handleDeleteClick(this._id)
-      );
+      this._deleteButton.addEventListener("click", () => {
+        this._handleDeleteClick(this._id);
+      });
     } else {
       this._deleteButton.style.display = "none";
     }
 
-    this._likeButton.addEventListener("click", () =>
-      this._handleLikeClick(this._id, this._isLiked)
-    );
-    this._imageElement.addEventListener("click", () =>
-      this._handleImageClick(this._name, this._link)
-    );
+    this._imageElement.addEventListener("click", () => {
+      this._handleImageClick(this._name, this._link);
+    });
   }
 
-  _handleLike() {
-    this._likeButton.classList.toggle("elements__like-btn_active");
-  }
-
-  _handleDelete() {
-    this._element.remove();
-    this._element = null;
-  }
-
-  // Public method to update like status
   updateLikeStatus(isLiked) {
     this._isLiked = isLiked;
     if (isLiked) {
@@ -64,7 +54,6 @@ export default class Card {
     }
   }
 
-  // Public method to remove card from DOM
   removeCard() {
     this._element.remove();
     this._element = null;
@@ -81,9 +70,7 @@ export default class Card {
     this._imageElement.alt = this._name;
     this._titleElement.textContent = this._name;
 
-    // Set initial like status
     this.updateLikeStatus(this._isLiked);
-
     this._setEventListeners();
 
     return this._element;

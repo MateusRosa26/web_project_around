@@ -1,14 +1,13 @@
-// eslint-disable-next-line import/extensions
-import Card from "./Card.js";
-import FormValidator from "./FormValidator.js";
-import Section from "./Section.js";
-import PopupWithImage from "./PopupWithImage.js";
-import PopupWithForm from "./PopupWithForm.js";
-import PopupWithConfirmation from "./PopupWithConfirmation.js";
-import UserInfo from "./UserInfo.js";
-import Api from "./Api.js";
+import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js";
+import Section from "../components/Section.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
+import UserInfo from "../components/UserInfo.js";
+import Api from "../components/Api.js";
 
-// -------------------- Configurações --------------------
+// Configurações de validação
 const validationConfig = {
   formSelector: ".form",
   inputSelector: ".form__input",
@@ -18,7 +17,7 @@ const validationConfig = {
   errorClass: "form__error_visible",
 };
 
-// -------------------- API --------------------
+// Configuração da API
 const api = new Api({
   baseUrl: "https://around-api.pt-br.tripleten-services.com/v1",
   headers: {
@@ -26,12 +25,12 @@ const api = new Api({
   },
 });
 
-// -------------------- Elementos da página --------------------
-const addCardBtn = document.querySelector(".profile__add-btn");
-const profileEditBtn = document.querySelector(".profile__edit-btn");
-const avatarEditBtn = document.querySelector(".profile__avatar-edit-btn");
+// Elementos da página
+const addCardButton = document.querySelector(".profile__add-btn");
+const profileEditButton = document.querySelector(".profile__edit-btn");
+const avatarEditButton = document.querySelector(".profile__avatar-edit-btn");
 
-// Forms
+// Formulários
 const addCardForm = document.querySelector(".form_type_add-card");
 const titleInput = addCardForm.querySelector(".form__input_type_title");
 const imageInput = addCardForm.querySelector(".form__input_type_image");
@@ -45,10 +44,10 @@ const descriptionInput = profileEditForm.querySelector(
 const avatarForm = document.querySelector(".form_type_avatar");
 const avatarInput = avatarForm.querySelector(".form__input_type_avatar");
 
-// -------------------- Variáveis globais --------------------
+// Variável global para ID do usuário
 let currentUserId = null;
 
-// -------------------- Instâncias de apoio --------------------
+// Instâncias das classes
 const userInfo = new UserInfo({
   nameSelector: ".profile__name",
   jobSelector: ".profile__description",
@@ -63,13 +62,12 @@ const deleteConfirmationPopup = new PopupWithConfirmation(
 );
 deleteConfirmationPopup.setEventListeners();
 
-// -------------------- Funções auxiliares --------------------
+// Funções auxiliares
 function handleDeleteClick(cardId) {
   deleteConfirmationPopup.setSubmitAction(() => {
     api
       .deleteCard(cardId)
       .then(() => {
-        // Find and remove card from DOM
         const cardElement = document.querySelector(
           `[data-card-id="${cardId}"]`
         );
@@ -89,7 +87,6 @@ function handleLikeClick(cardId, isLiked) {
   api
     .changeLikeCardStatus(cardId, !isLiked)
     .then((updatedCard) => {
-      // Find card instance and update like status
       const cardElement = document.querySelector(`[data-card-id="${cardId}"]`);
       if (cardElement) {
         const likeButton = cardElement.querySelector(".elements__like-btn");
@@ -132,11 +129,11 @@ const cardSection = new Section(
   ".elements__grid-container"
 );
 
-// -------------------- Popups de formulário --------------------
+// Popups de formulário
 const addCardPopup = new PopupWithForm(".popup_type_add-card", (formData) => {
   const cardData = {
-    name: formData["card-title"] || formData.title,
-    link: formData["card-image"] || formData.image,
+    name: formData["card-title"],
+    link: formData["card-image"],
   };
 
   addCardPopup.renderLoading(true);
@@ -160,8 +157,8 @@ const profilePopup = new PopupWithForm(
   ".popup_type_edit-profile",
   (formData) => {
     const userData = {
-      name: formData["profile-name"] || formData.name,
-      about: formData["profile-description"] || formData.description,
+      name: formData["profile-name"],
+      about: formData["profile-description"],
     };
 
     profilePopup.renderLoading(true);
@@ -186,7 +183,7 @@ profilePopup.setEventListeners();
 
 const avatarPopup = new PopupWithForm(".popup_type_avatar", (formData) => {
   const avatarData = {
-    avatar: formData["avatar-url"] || formData.avatar,
+    avatar: formData["avatar-url"],
   };
 
   avatarPopup.renderLoading(true);
@@ -205,7 +202,7 @@ const avatarPopup = new PopupWithForm(".popup_type_avatar", (formData) => {
 });
 avatarPopup.setEventListeners();
 
-// -------------------- Validadores --------------------
+// Validadores
 const addCardFormValidator = new FormValidator(validationConfig, addCardForm);
 addCardFormValidator.enableValidation();
 
@@ -218,15 +215,15 @@ profileFormValidator.enableValidation();
 const avatarFormValidator = new FormValidator(validationConfig, avatarForm);
 avatarFormValidator.enableValidation();
 
-// -------------------- Listeners de abertura --------------------
-addCardBtn.addEventListener("click", () => {
+// Event listeners para abrir popups
+addCardButton.addEventListener("click", () => {
   addCardForm.reset();
   addCardFormValidator.resetValidation();
   addCardPopup.open();
   titleInput.focus();
 });
 
-profileEditBtn.addEventListener("click", () => {
+profileEditButton.addEventListener("click", () => {
   const { name, job } = userInfo.getUserInfo();
   nameInput.value = name;
   descriptionInput.value = job;
@@ -234,28 +231,24 @@ profileEditBtn.addEventListener("click", () => {
   profilePopup.open();
 });
 
-avatarEditBtn.addEventListener("click", () => {
+avatarEditButton.addEventListener("click", () => {
   avatarForm.reset();
   avatarFormValidator.resetValidation();
   avatarPopup.open();
   avatarInput.focus();
 });
 
-// -------------------- Inicialização --------------------
-api
-  .getAppData()
+// Inicialização da aplicação
+Promise.all([api.getUserInfo(), api.getInitialCards()])
   .then(([userData, cards]) => {
-    // Store current user ID
     currentUserId = userData._id;
 
-    // Atualiza informações do usuário
     userInfo.setUserInfo({
       name: userData.name,
       job: userData.about,
       avatar: userData.avatar,
     });
 
-    // Renderiza cartões iniciais
     cardSection._items = cards;
     cardSection.renderItems();
   })
